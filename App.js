@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, ImageBackground, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import Homepage from './screens/Homepage';
+import InitCampeonato from './screens/InitCampeonato';
+import { useState } from 'react';
 
 export default function App() {
+
+  const [totalTimes, setTotalTimes ] = useState();
+  let content = <Homepage afterDefineTimes={initCampeonato}/>;
+
+  function initCampeonato(value){
+    setTotalTimes(value);
+  }
+
+  if(totalTimes){
+     content = <InitCampeonato qtdTimes={totalTimes} />;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <LinearGradient colors={["#f5da44","#010f09"]} style={styles.root}>
+       <ImageBackground
+        source={require('./assets/images/background.jpg')}
+        resizeMode="cover"
+        style={styles.root}
+        imageStyle={styles.backgroundImage}
+      >
+      <View>
+        {content}
+      </View>  
+      </ImageBackground>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  root: {
+    flex: 1 ,
   },
+  backgroundImage: {
+    opacity: 0.15
+  }
 });
