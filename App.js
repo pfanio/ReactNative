@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export default function App() {
 
-  const [item, setItem] = useState('');
+  const [novoItem, setNovoItem] = useState('');
   const [objList, setObjList] = useState([]);
 
   function addToList() {
