@@ -20,7 +20,7 @@ export default function App() {
         <TextInput style={styles.input}
           onChangeText={setItem}
           value={item}
-          placeholder='Seu objetivo'
+          placeholder='Seu Foco'
         >
         </TextInput>
         <Button title='Adicionar' onPress={addToList} />
